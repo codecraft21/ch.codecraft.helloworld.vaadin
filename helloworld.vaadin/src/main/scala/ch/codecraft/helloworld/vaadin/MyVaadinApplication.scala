@@ -1,6 +1,7 @@
 package ch.codecraft.helloworld.vaadin
 
 import vaadin.scala._
+import com.vaadin.ui.{Button => Btn}
 
 class MyVaadinApplication extends com.vaadin.Application {
 
@@ -13,6 +14,6 @@ class MyVaadinApplication extends com.vaadin.Application {
     getMainWindow.addComponent(button)
   }
 
-  def buttonAction(event: com.vaadin.ui.Button#ClickEvent) = getMainWindow.addComponent(new Label("Thank you for clicking"))
+  def buttonAction(event: Btn#ClickEvent) = getMainWindow.addComponent(new Label("Thank you for clicking"))
 
 }
