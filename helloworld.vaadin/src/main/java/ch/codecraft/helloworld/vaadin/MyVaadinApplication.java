@@ -16,6 +16,7 @@ public class MyVaadinApplication extends Application {
     private static final long serialVersionUID = 1L;
 
     @Inject @Named("welcome") protected String text;
+    @Inject @Named("what_time") private String whatTime;
 
     @Override
     public void init() {
@@ -23,7 +24,7 @@ public class MyVaadinApplication extends Application {
         setMainWindow(main);
         main.addComponent(new Label(text));
 
-        main.addComponent(new Button("what time is it?", new Button.ClickListener() {
+        main.addComponent(new Button(whatTime, new Button.ClickListener() {
             private static final long serialVersionUID = 1L;
 
             @Override

@@ -4,6 +4,7 @@
 package ch.codecraft.helloworld.vaadin.guice;
 
 import ch.codecraft.helloworld.vaadin.MyVaadinApplication;
+import ch.codecraft.helloworld.vaadin.res.Messages;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -21,9 +22,6 @@ import com.vaadin.Application;
  */
 public class MyServletConfig extends GuiceServletContextListener {
 
-    /* (non-Javadoc)
-     * @see com.google.inject.servlet.GuiceServletContextListener#getInjector()
-     */
     @Override
     protected Injector getInjector() {
         ServletModule module = new ServletModule() {
@@ -32,7 +30,8 @@ public class MyServletConfig extends GuiceServletContextListener {
                 serve("/*").with(GuiceApplicationServlet.class);
 
                 bind(Application.class).to(MyVaadinApplication.class).in(ServletScopes.SESSION);
-                bindConstant().annotatedWith(Names.named("welcome")).to("This is my first Vaadin/Guice Application");
+                bindConstant().annotatedWith(Names.named("welcome")).to(Messages.getString("MyServletConfig.welcome"));
+                bindConstant().annotatedWith(Names.named("what_time")).to(Messages.getString("MyServletConfig.what_time"));
             }
         };
 
